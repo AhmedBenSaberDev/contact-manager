@@ -9,6 +9,7 @@
       :is="currentTabComponent"
       :contactsList="contactsList"
       @add-contact="addContact"
+      @delete-contact="deleteContact"
       class="py-3"
       ></component>
   </div>
@@ -68,6 +69,15 @@ export default {
     addContact(newContact) {
       this.contactsList.unshift(newContact)
       this.currentTab= "ContactList"
+    },
+    deleteContact(contactId)
+    {
+      this.contactsList.forEach((element,index) => {
+        if(contactId == element.id)
+        {
+          return this.contactsList.splice(index,1);
+        }
+      });
     }
   },
 };

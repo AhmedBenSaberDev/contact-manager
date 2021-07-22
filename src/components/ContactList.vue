@@ -15,7 +15,7 @@
     </ul>
       </div>
       <div class="col-6">
-        <Details v-if="currentContact !== null" :contact="currentContact"></Details>
+        <Details @delete-contact="deleteContact" v-if="currentContact !== null" :contact="currentContact"></Details>
       </div>
     </div>
   </div>
@@ -35,6 +35,12 @@ export default {
       currentContact: null
     }
   },
+  methods:{
+    deleteContact(contactId)
+    {
+      this.$emit('delete-contact',contactId);
+    }
+  }
 };
 </script>
 

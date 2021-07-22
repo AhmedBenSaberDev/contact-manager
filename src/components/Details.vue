@@ -11,7 +11,7 @@
   </ul>
   <div class="card-footer">
       <div class="btn btn-outline-warning"><fa-icon icon="edit"></fa-icon></div>&nbsp;
-      <div class="btn btn-outline-danger"><fa-icon icon="trash"></fa-icon></div>
+      <div @click='deleteContact' class="btn btn-outline-danger"><fa-icon icon="trash"></fa-icon></div>
   </div>
 </div>
 </template>
@@ -21,6 +21,12 @@ export default {
     props: {
         contact: Object
     },
+    methods:{
+      deleteContact()
+      {
+        this.$emit('delete-contact',this.contact.id);
+      }
+    }
 }
 </script>
 

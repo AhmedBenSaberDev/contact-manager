@@ -10,7 +10,7 @@
     <li class="list-group-item"><fa-icon icon="city"></fa-icon> {{ contact.address.city }}</li>
   </ul>
   <div class="card-footer">
-      <div class="btn btn-outline-warning"><fa-icon icon="edit"></fa-icon></div>&nbsp;
+      <div @click="editContact" class="btn btn-outline-warning"><fa-icon icon="edit"></fa-icon></div>&nbsp;
       <div @click='deleteContact' class="btn btn-outline-danger"><fa-icon icon="trash"></fa-icon></div>
   </div>
 </div>
@@ -25,9 +25,15 @@ export default {
       deleteContact()
       {
         this.$emit('delete-contact',this.contact.id);
+      },
+      editContact()
+      {
+        this.$emit('edit-contact',this.contact);
       }
-    }
+
+  }
 }
+
 </script>
 
 <style>

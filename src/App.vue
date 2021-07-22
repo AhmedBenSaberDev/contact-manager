@@ -31,6 +31,9 @@
     <router-view class="container p-3" />
   </div>
 </template>
-./components/ContactList.vue
+
 <style>
+body{
+  overflow:hidden;
+}
 </style>

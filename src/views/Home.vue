@@ -8,22 +8,29 @@
     <component
       :is="currentTabComponent"
       :contactsList="contactsList"
+      :contactToEdit="contactToEdit"
+      @edit-contact="editContact"
       @add-contact="addContact"
       @delete-contact="deleteContact"
+      @update-contact="updateContact"
       class="py-3"
       ></component>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
 import ContactList from "@/components/ContactList.vue";
 import Add from '@/components/Add.vue';
+import Edit from '@/components/Edit.vue';
+
+
 export default {
   name: "Home",
-  components: { ContactList, Add },
+  components: { ContactList, Add , Edit },
   data() {
     return {
+      contactToEdit:{},
       contactsList: [
         {
           id: 1,
@@ -78,7 +85,22 @@ export default {
           return this.contactsList.splice(index,1);
         }
       });
-    }
-  },
+    },
+    editContact(contact)
+    {
+      this.contactToEdit = contact;
+      this.currentTab = "Edit";
+    },
+    updateContact(contactToUpdate)
+     {
+       
+       this.contactsList.forEach(contact => {
+         if(contactToUpdate.id == contact.id)
+         {
+           contactToUpdate = contact;
+         }
+       });
+     }
+  }
 };
 </script>
